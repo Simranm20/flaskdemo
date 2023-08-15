@@ -13,7 +13,7 @@ def home():
 
 @app.route('/about')
 def about():
-    return "I am still working on this"
+    return render_template("about.html")  # Updated to render the "about.html" template
 
 
 @app.route('/search', methods=['POST', 'GET'])
@@ -28,7 +28,7 @@ def search():
 def results():
     search_term = session['search_term']
     page = get_page(search_term)
-    return render_template("results.html", page=page)
+    return render_template("results.html", page=page, search_term=search_term)  # Added search_term parameter
 
 
 def get_page(search_term):
